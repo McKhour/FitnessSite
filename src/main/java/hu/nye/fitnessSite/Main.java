@@ -36,7 +36,7 @@ public class Main {
 	@Bean
 	CommandLineRunner suly(){
 		return args -> {
-			SulyEmeles suly = new SulyEmeles(210, 3, 20, Tipusa.EGYKEZES);
+			SulyEmeles suly = new SulyEmeles(1, 210, 3, 20, Tipusa.EGYKEZES);
 			log.info("Sulyok: " + suly);
 		};
 	}
@@ -44,7 +44,7 @@ public class Main {
 	@Bean
 	CommandLineRunner kaloria(){
 		return args -> {
-			KaloriaBevitel bevi = new KaloriaBevitel(10, 105, 21, 0);
+			KaloriaBevitel bevi = new KaloriaBevitel(1, 10, 105, 21, 0);
 			log.info("Kalóriák: " + bevi);
 		};
 	}
