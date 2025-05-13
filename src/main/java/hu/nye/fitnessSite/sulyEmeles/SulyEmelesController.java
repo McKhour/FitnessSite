@@ -27,7 +27,7 @@ public class SulyEmelesController {
     SulyEmeles findById(@PathVariable Integer id){
         Optional<SulyEmeles> suly = sulyEmelesRepository.findById(id);
         if (suly.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Futás nem található");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Súly emelés nem található");
         }
         return suly.get();
     }
