@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>EnergyDrink App</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Üdvözletem nagy uram! Mit sikerült kivitelezni?</h1>
+<p>Válasszon egy edzést:</p>
+<ul>
+  <li><a th:href="@{/futas}">Futás</a></li>
+  <li><a th:href="@{/kaloriaBevitel}">Kalória bevitel</a></li>
+  <li><a th:href="@{/sulyEmeles}">Súly emelés</a></li>
+</ul>
+</body>
+</html>
