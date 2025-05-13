@@ -41,7 +41,7 @@ public class FutasRepository {
         fut.add(new Futas( 1,
             "Hétfő Reggeli",
                 LocalDateTime.now(),
-                LocalDateTime.now().plus(30, ChronoUnit.MINUTES),
+                LocalDateTime.now().plusMinutes(30),
                 0.7,
                 Helye.KINT
         ));
@@ -49,7 +49,7 @@ public class FutasRepository {
         fut.add(new Futas( 2,
                 "Hétfő Délutáni",
                 LocalDateTime.now(),
-                LocalDateTime.now().plus(25, ChronoUnit.MINUTES),
+                LocalDateTime.now().plusMinutes(25),
                 1.3,
                 Helye.KINT
         ));

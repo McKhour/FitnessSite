@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Positive;
 import java.time.LocalDateTime;
 
 public record Futas(
-        @NotEmpty
         Integer id,
         @NotEmpty
         String futasCim,
