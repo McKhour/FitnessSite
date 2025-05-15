@@ -35,20 +35,27 @@ public class FutasController {
     //post
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
-    void create(@Valid @RequestBody Futas futas){
+    void create(@Valid @RequestBody Futas futas)
+    {
         futasRepository.create(futas);
     }
+
+    //put
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
-    void update(@Valid @RequestBody Futas futas, @PathVariable Integer id){
+    void update(@Valid @RequestBody Futas futas, @PathVariable Integer id)
+    {
         futasRepository.update(futas, id);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PutMapping("/{id}")
-    void delete(@PathVariable Integer id){
+    @DeleteMapping("/{id}")
+    void delete(@PathVariable Integer id)
+    {
         futasRepository.delete(id);
+
     }
+
     //@GetMapping("/futas")
     //String futas(){
     //    return "A futás helye";

@@ -35,9 +35,12 @@ public class SulyEmelesController {
     //post
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
-    void create(@Valid @RequestBody SulyEmeles suly){
+    void create(@Valid @RequestBody SulyEmeles suly)
+    {
         sulyEmelesRepository.create(suly);
+
     }
+
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
     void update(@Valid @RequestBody SulyEmeles suly, @PathVariable Integer id){
@@ -45,8 +48,9 @@ public class SulyEmelesController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PutMapping("/{id}")
-    void delete(@PathVariable Integer id){
+    @DeleteMapping("/{id}")
+    void delete(@PathVariable Integer id)
+    {
         sulyEmelesRepository.delete(id);
     }
 

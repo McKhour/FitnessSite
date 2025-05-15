@@ -10,9 +10,9 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/kaloriaBevitel")
-public class KaloriaBevitelController {
+    public class KaloriaBevitelController {
 
-   private final KaloriaBevitelRepository kaloriaBevitelRepository;
+    private final KaloriaBevitelRepository kaloriaBevitelRepository;
 
     public KaloriaBevitelController(KaloriaBevitelRepository kaloriaBevitelRepository) {
         this.kaloriaBevitelRepository = kaloriaBevitelRepository;
@@ -35,20 +35,24 @@ public class KaloriaBevitelController {
     //post
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
-    void create(@Valid @RequestBody KaloriaBevitel kaloriaBevitel){
+    void create(@Valid @RequestBody KaloriaBevitel kaloriaBevitel)
+    {
         kaloriaBevitelRepository.create(kaloriaBevitel);
     }
+    //updte
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
     void update(@Valid @RequestBody KaloriaBevitel kaloriaBevitel, @PathVariable Integer id){
         kaloriaBevitelRepository.update(kaloriaBevitel, id);
     }
-
+    //delete
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PutMapping("/{id}")
-    void delete(@PathVariable Integer id){
+    @DeleteMapping("/{id}")
+    void delete(@PathVariable Integer id)
+    {
         kaloriaBevitelRepository.delete(id);
     }
+
     //@GetMapping("/kaloriaBevitel")
     //String kaloria(){
     //    return "Ez itt a kalória oldala";

@@ -9,8 +9,10 @@ import java.util.Optional;
 @Repository
 public class KaloriaBevitelRepository {
     private List<KaloriaBevitel> bevitel = new ArrayList<>();
-    List<KaloriaBevitel> findAll(){
+    List<KaloriaBevitel> findAll()
+    {
         return bevitel;
+
     }
 
     Optional<KaloriaBevitel> findById(Integer id){
@@ -28,7 +30,9 @@ public class KaloriaBevitelRepository {
         }
     }
 
-    void delete(Integer id){
+    void delete(Integer id)
+    {
         bevitel.removeIf(kaloriaBevitel -> kaloriaBevitel.id() == id);
+
     }
 }
