@@ -10,11 +10,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/sulyEmeles")
-public class SulyEmelesController {
+public class SulyEmelesRestController {
 
     private final SulyEmelesRepository sulyEmelesRepository;
 
-    public SulyEmelesController(SulyEmelesRepository sulyEmelesRepository) {
+    public SulyEmelesRestController(SulyEmelesRepository sulyEmelesRepository) {
         this.sulyEmelesRepository = sulyEmelesRepository;
     }
 

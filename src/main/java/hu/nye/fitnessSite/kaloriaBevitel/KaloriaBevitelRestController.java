@@ -10,11 +10,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/kaloriaBevitel")
-    public class KaloriaBevitelController {
+    public class KaloriaBevitelRestController {
 
     private final KaloriaBevitelRepository kaloriaBevitelRepository;
 
-    public KaloriaBevitelController(KaloriaBevitelRepository kaloriaBevitelRepository) {
+    public KaloriaBevitelRestController(KaloriaBevitelRepository kaloriaBevitelRepository) {
         this.kaloriaBevitelRepository = kaloriaBevitelRepository;
     }
 
