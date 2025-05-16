@@ -1,5 +1,6 @@
 package hu.nye.fitnessSite.kaloriaBevitel;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -34,5 +35,24 @@ public class KaloriaBevitelRepository {
     {
         bevitel.removeIf(kaloriaBevitel -> kaloriaBevitel.id() == id);
 
+    }
+
+    @PostConstruct
+    private void init(){
+        bevitel.add(new KaloriaBevitel(
+                1,
+                12,
+                31,
+                35,
+                120
+                ));
+
+        bevitel.add(new KaloriaBevitel(
+                1,
+                13,
+                134,
+                54,
+                130
+        ));
     }
 }

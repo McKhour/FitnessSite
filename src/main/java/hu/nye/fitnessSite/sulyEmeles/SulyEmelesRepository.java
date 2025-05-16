@@ -1,5 +1,6 @@
 package hu.nye.fitnessSite.sulyEmeles;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -31,5 +32,24 @@ public class SulyEmelesRepository {
 
     void delete(Integer id){
         suly.removeIf(sulyEmeles -> sulyEmeles.id() == id);
+    }
+
+    @PostConstruct
+    private void init(){
+        suly.add(new SulyEmeles(
+                1,
+                50,
+                15,
+                10,
+                Tipusa.TOLOPAD
+        ));
+
+        suly.add(new SulyEmeles(
+                2,
+                75,
+                10,
+                15,
+                Tipusa.FEKVENYOMAS
+        ));
     }
 }
