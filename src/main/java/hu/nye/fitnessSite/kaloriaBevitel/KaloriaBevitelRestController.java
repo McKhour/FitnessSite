@@ -40,7 +40,7 @@ import java.util.Optional;
         kaloriaBevitelRepository.create(kaloriaBevitel);
     }
     //updte
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("/{id}")
     void update(@Valid @RequestBody KaloriaBevitel kaloriaBevitel, @PathVariable Integer id){
         kaloriaBevitelRepository.update(kaloriaBevitel, id);

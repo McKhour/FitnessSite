@@ -18,7 +18,7 @@ public class FutasRestController {
         this.futasRepository = futasRepository;
     }
 
-    @GetMapping("/api")
+    @GetMapping("")
     List<Futas> findAll(){
         return futasRepository.findAll();
     }
@@ -41,7 +41,7 @@ public class FutasRestController {
     }
 
     //put
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("/{id}")
     void update(@Valid @RequestBody Futas futas, @PathVariable Integer id)
     {

@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 public record Futas(
         Integer id,
         @NotEmpty
+        Integer userId,
+        @NotEmpty
         String futasCim,
         LocalDateTime futasKezd,
         LocalDateTime futasVeg,

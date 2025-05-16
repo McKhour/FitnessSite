@@ -38,6 +38,7 @@ public class SulyEmelesRepository {
     private void init(){
         suly.add(new SulyEmeles(
                 1,
+                1,
                 50,
                 15,
                 10,
@@ -46,6 +47,7 @@ public class SulyEmelesRepository {
 
         suly.add(new SulyEmeles(
                 2,
+                1,
                 75,
                 10,
                 15,

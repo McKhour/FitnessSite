@@ -39,6 +39,7 @@ public class FutasRepository {
     @PostConstruct
     private void init(){
         fut.add(new Futas( 1,
+                1,
             "Hétfő Reggeli",
                 LocalDateTime.now(),
                 LocalDateTime.now().plusMinutes(30),
@@ -47,6 +48,7 @@ public class FutasRepository {
         ));
 
         fut.add(new Futas( 2,
+                1,
                 "Hétfő Délutáni",
                 LocalDateTime.now(),
                 LocalDateTime.now().plusMinutes(25),

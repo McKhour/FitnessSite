@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Positive;
 
 public record SulyEmeles(
         Integer id,
+        @NotEmpty
+        Integer userId,
         @NotEmpty @Positive
         Integer suly,
         @NotEmpty @Positive

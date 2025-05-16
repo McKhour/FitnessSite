@@ -41,6 +41,7 @@ public class KaloriaBevitelRepository {
     private void init(){
         bevitel.add(new KaloriaBevitel(
                 1,
+                1,
                 12,
                 31,
                 35,
@@ -48,6 +49,7 @@ public class KaloriaBevitelRepository {
                 ));
 
         bevitel.add(new KaloriaBevitel(
+                1,
                 1,
                 13,
                 134,

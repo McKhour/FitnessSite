@@ -41,7 +41,7 @@ public class SulyEmelesRestController {
 
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("/{id}")
     void update(@Valid @RequestBody SulyEmeles suly, @PathVariable Integer id){
         sulyEmelesRepository.update(suly, id);
