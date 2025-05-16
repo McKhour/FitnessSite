@@ -48,6 +48,7 @@ public class FutasController {
         futasRepository.update(futas, id);
     }
 
+    //delete
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     void delete(@PathVariable Integer id)
