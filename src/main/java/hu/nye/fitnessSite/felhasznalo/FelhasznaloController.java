@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/bejelentkezes")
+@RequestMapping("/felhasznalo")
 public class FelhasznaloController {
 
     @GetMapping("")
-    public String bejelentkez(){
-        return "bejelentkezes/bejelentkezes";
+    public String felhasznalo(){
+        return "felhasznalo/felhasznalo";
     }
 }

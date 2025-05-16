@@ -14,7 +14,7 @@ public class FelhasznaloRepository {
         return user;
     }
 
-    Optional<Felhasznalo> findById(Integer id){
+    Optional<Felhasznalo> findById(Long id){
         return user.stream().filter(felhasznalo -> felhasznalo.id() == id).findFirst();
     }
 
@@ -22,25 +22,14 @@ public class FelhasznaloRepository {
         user.add(felhasznalo);
     }
 
-    void update(Felhasznalo felhasznalo, Integer id){
+    void update(Felhasznalo felhasznalo, Long id){
         Optional<Felhasznalo> existingFelh = findById(id);
         if (existingFelh.isPresent()){
             user.set(user.indexOf(existingFelh.get()), felhasznalo);
         }
     }
 
-    void delete(Integer id){
+    void delete(Long id){
         user.removeIf(felhasznalo -> felhasznalo.id() == id);
-    }
-
-    private void init(){
-        user.add(new Felhasznalo(
-                1,
-                "Elek",
-                "Teszt",
-                "teszt.elek1@usd.gov",
-                18,
-                56
-        ));
     }
 }

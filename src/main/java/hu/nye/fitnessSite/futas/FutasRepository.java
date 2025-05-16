@@ -18,7 +18,7 @@ public class FutasRepository {
         return fut;
     }
 
-    Optional<Futas> findById(Integer id){
+    Optional<Futas> findById(Long id){
         return fut.stream().filter(futas -> futas.id() == id).findFirst();
     }
 
@@ -26,34 +26,15 @@ public class FutasRepository {
         fut.add(futas);
     }
 
-    void update(Futas futas, Integer id){
+    void update(Futas futas, Long id){
         Optional<Futas> existingFutas = findById(id);
         if (existingFutas.isPresent()){
             fut.set(fut.indexOf(existingFutas.get()),futas);
         }
     }
 
-    void delete(Integer id){
+    void delete(Long id){
         fut.removeIf(futas -> futas.id().equals(id));
     }
-    @PostConstruct
-    private void init(){
-        fut.add(new Futas( 1,
-                1,
-            "Hétfő Reggeli",
-                LocalDateTime.now(),
-                LocalDateTime.now().plusMinutes(30),
-                0.7,
-                Helye.KINT
-        ));
 
-        fut.add(new Futas( 2,
-                1,
-                "Hétfő Délutáni",
-                LocalDateTime.now(),
-                LocalDateTime.now().plusMinutes(25),
-                1.3,
-                Helye.KINT
-        ));
-    }
 }

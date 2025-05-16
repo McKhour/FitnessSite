@@ -15,7 +15,7 @@ public class SulyEmelesRepository {
         return suly;
     }
 
-    Optional<SulyEmeles> findById(Integer id){
+    Optional<SulyEmeles> findById(Long id){
         return suly.stream().filter(sulyEmeles -> sulyEmeles.id() == id).findFirst();
     }
 
@@ -23,35 +23,14 @@ public class SulyEmelesRepository {
         suly.add(sulyEmeles);
     }
 
-    void update(SulyEmeles sulyEmeles, Integer id){
+    void update(SulyEmeles sulyEmeles, Long id){
         Optional<SulyEmeles> existingSuly = findById(id);
         if (existingSuly.isPresent()) {
             suly.set(suly.indexOf(existingSuly.get()), sulyEmeles);
         }
     }
 
-    void delete(Integer id){
+    void delete(Long id){
         suly.removeIf(sulyEmeles -> sulyEmeles.id() == id);
-    }
-
-    @PostConstruct
-    private void init(){
-        suly.add(new SulyEmeles(
-                1,
-                1,
-                50,
-                15,
-                10,
-                Tipusa.TOLOPAD
-        ));
-
-        suly.add(new SulyEmeles(
-                2,
-                1,
-                75,
-                10,
-                15,
-                Tipusa.FEKVENYOMAS
-        ));
     }
 }

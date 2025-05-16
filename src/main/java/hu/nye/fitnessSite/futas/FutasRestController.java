@@ -24,7 +24,7 @@ public class FutasRestController {
     }
 
     @GetMapping("/{id}")
-    Futas findById(@PathVariable Integer id){
+    Futas findById(@PathVariable Long id){
         Optional<Futas> futas = futasRepository.findById(id);
         if (futas.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Futás nem található");
@@ -43,7 +43,7 @@ public class FutasRestController {
     //put
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("/{id}")
-    void update(@Valid @RequestBody Futas futas, @PathVariable Integer id)
+    void update(@Valid @RequestBody Futas futas, @PathVariable Long id)
     {
         futasRepository.update(futas, id);
     }
@@ -51,7 +51,7 @@ public class FutasRestController {
     //delete
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
-    void delete(@PathVariable Integer id)
+    void delete(@PathVariable Long id)
     {
         futasRepository.delete(id);
 

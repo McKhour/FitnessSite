@@ -24,7 +24,7 @@ import java.util.Optional;
     }
 
     @GetMapping("/{id}")
-    KaloriaBevitel findById(@PathVariable Integer id){
+    KaloriaBevitel findById(@PathVariable Long id){
         Optional<KaloriaBevitel> kaloriaBevitel = kaloriaBevitelRepository.findById(id);
         if (kaloriaBevitel.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Kalóriabevitel nem található");
@@ -42,13 +42,13 @@ import java.util.Optional;
     //updte
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("/{id}")
-    void update(@Valid @RequestBody KaloriaBevitel kaloriaBevitel, @PathVariable Integer id){
+    void update(@Valid @RequestBody KaloriaBevitel kaloriaBevitel, @PathVariable Long id){
         kaloriaBevitelRepository.update(kaloriaBevitel, id);
     }
     //delete
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
-    void delete(@PathVariable Integer id)
+    void delete(@PathVariable Long id)
     {
         kaloriaBevitelRepository.delete(id);
     }

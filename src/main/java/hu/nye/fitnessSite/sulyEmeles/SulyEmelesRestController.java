@@ -24,7 +24,7 @@ public class SulyEmelesRestController {
     }
 
     @GetMapping("/{id}")
-    SulyEmeles findById(@PathVariable Integer id){
+    SulyEmeles findById(@PathVariable Long id){
         Optional<SulyEmeles> suly = sulyEmelesRepository.findById(id);
         if (suly.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Súly emelés nem található");
@@ -43,13 +43,13 @@ public class SulyEmelesRestController {
 
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("/{id}")
-    void update(@Valid @RequestBody SulyEmeles suly, @PathVariable Integer id){
+    void update(@Valid @RequestBody SulyEmeles suly, @PathVariable Long id){
         sulyEmelesRepository.update(suly, id);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
-    void delete(@PathVariable Integer id)
+    void delete(@PathVariable Long id)
     {
         sulyEmelesRepository.delete(id);
     }

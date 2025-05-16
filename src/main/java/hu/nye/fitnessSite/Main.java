@@ -25,37 +25,4 @@ public class Main {
 
 		SpringApplication.run(Main.class, args);
 	}
-
-	@Bean
-	CommandLineRunner futo(){
-		return args -> {
-				Futas futas = new Futas(1, 1, "Első futás", LocalDateTime.now(), LocalDateTime.now().plus(1, ChronoUnit.HOURS), 1.3, Helye.KINT);
-				log.info("Futás: " + futas);
-		};
-	}
-
-	@Bean
-	CommandLineRunner suly(){
-		return args -> {
-			SulyEmeles suly = new SulyEmeles(1, 1, 210, 3, 20, Tipusa.EGYKEZES);
-			log.info("Sulyok: " + suly);
-		};
-	}
-
-	@Bean
-	CommandLineRunner kaloria(){
-		return args -> {
-			KaloriaBevitel bevi = new KaloriaBevitel(1, 1, 10, 105, 21, 0);
-			log.info("Kalóriák: " + bevi);
-		};
-	}
-
-	@Bean
-	CommandLineRunner felhasznalo(){
-		return args -> {
-			Felhasznalo user = new Felhasznalo(1, "Elek", "Teszt", "tesztelek@usd.gov", 25, 78);
-			log.info("Felhasználók: " + user);
-		};
-	}
-
 }

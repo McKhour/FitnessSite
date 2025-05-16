@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/bejelentkezes")
+@RequestMapping("/api/felhasznalo")
 public class FalhasznaloRestController {
 
     private final FelhasznaloRepository felhasznaloRepository;
@@ -24,7 +24,7 @@ public class FalhasznaloRestController {
     }
 
     @GetMapping("/{id}")
-    Felhasznalo findById(@PathVariable Integer id){
+    Felhasznalo findById(@PathVariable Long id){
         Optional<Felhasznalo> user = felhasznaloRepository.findById(id);
         if (user.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "A felhasználó nem található!");
@@ -40,13 +40,13 @@ public class FalhasznaloRestController {
 
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("/{id}")
-    void update(@Valid @RequestBody Felhasznalo felhasznalo, Integer id){
+    void update(@Valid @RequestBody Felhasznalo felhasznalo, Long id){
         felhasznaloRepository.update(felhasznalo, id);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
-    void delete(@Valid @RequestBody Integer id){
+    void delete(@Valid @RequestBody Long id){
         felhasznaloRepository.delete(id);
     }
 }
