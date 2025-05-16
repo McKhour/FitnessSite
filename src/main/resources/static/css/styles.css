@@ -1,3 +1,51 @@
-body{
-    background: color(#192fff);
+:root {
+  --backgroundColor: #761717e0;
+  --backgroundImage: url('https://i.imgur.com/Qu2Tci2.jpeg');
+  --backgroundPosition: center;
+  --backgroundSize: cover;
+  --backgroundRepeat: no-repeat;
+  --backgroundBlur: 50px;
+  --backgroundOpacity: 1;
 }
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #761717e0;
+  background-position: center;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: #761717e0;
+  background-image: url('https://i.imgur.com/Qu2Tci2.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  filter: blur(20px);
+  opacity: 0.6;
+  z-index: -1; /* Legyen a háttérben */
+}
+
+a:link{
+    color: aqua;
+}
+a:visited{
+    color: aqua;
+}
+p{
+    color: rgb(21, 203, 118);
+}
+h1, h2{
+    color: aquamarine;
+}
+back
