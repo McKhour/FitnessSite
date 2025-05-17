@@ -23,7 +23,7 @@ public class FelhasznaloController {
     @GetMapping("/list")
     public String felhasznaloList(Model model){
         List<Felhasznalo> felhasz = felhasznaloRest.findAll();
-        model.addAttribute("felhasznalok", felhasz); // jobban hangzik többes számban
-        return "felhasznalo/felhasznalo"; // ez a felhasznalo.html fájl lesz
+        model.addAttribute("felhasznalok", felhasz);
+        return "felhasznalo/felhasznalo";
     }
 }

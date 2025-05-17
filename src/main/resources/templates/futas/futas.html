@@ -2,11 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Futás tábla</title>
+    <title>Futók</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<h1>Ha jól csináltam akkor itt futások lesznek!</h1>
-<p>Futas</p>
+<h1>Futások listája</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Felhasználó ID</th>
+        <th>Futás Cím</th>
+        <th>Futás kezdete</th>
+        <th>Futás vége</th>
+        <th>Távolság (kilométer)</th>
+        <th>Futás helye (Bent vagy Kint)</th>
+    </tr>
+    <tr th:each="futas : ${futok}">
+        <td th:text="${futas.id}">ID</td>
+        <td th:text="${futas.felhasznalo.id}">Felhasználó ID</td>
+        <td th:text="${futas.futasCim}">Futás neve</td>
+        <td th:text="${futas.futasKezd}">Futás kezdete</td>
+        <td th:text="${futas.futasVeg}">Futás vége</td>
+        <td th:text="${futas.kilometer} + 'km'">Távolság (kilométerben)</td>
+        <td th:text="${futas.helye}">Futás helye(bent/kint)</td>
+    </tr>
+</table>
+<a th:href="@{/}">Vissza a főoldalra</a>
 </body>
 </html>
