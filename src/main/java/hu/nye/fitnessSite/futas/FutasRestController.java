@@ -1,6 +1,5 @@
 package hu.nye.fitnessSite.futas;
 
-import hu.nye.fitnessSite.felhasznalo.Felhasznalo;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +33,6 @@ public class FutasRestController {
         return futas.get();
     }
 
-    @GetMapping("/{felhasznalo}")
     public List<Futas> findByUId(@PathVariable Long felhasznaloId){
         List<Futas> futas = futasRepository.findByFelhasznalo_Id(felhasznaloId);
         if (futas.isEmpty()){
