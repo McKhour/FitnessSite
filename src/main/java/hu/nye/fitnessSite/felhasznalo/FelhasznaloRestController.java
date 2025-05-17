@@ -31,12 +31,13 @@ public class FelhasznaloRestController {
         }
         return user.get();
     }
+    //post
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
     void create(@Valid @RequestBody Felhasznalo felhasznalo){
         felhasznaloRepository.save(felhasznalo);
     }
-
+    //put
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("/{id}")
     void put(@Valid @RequestBody Felhasznalo felhasznalo, @PathVariable Long id){
@@ -65,7 +66,7 @@ public class FelhasznaloRestController {
         }
 
     }
-
+    //delete
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     void delete(@Valid @RequestBody @PathVariable Long id) {
