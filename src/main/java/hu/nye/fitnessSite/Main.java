@@ -1,6 +1,7 @@
 package hu.nye.fitnessSite;
 
 import hu.nye.fitnessSite.felhasznalo.Felhasznalo;
+import hu.nye.fitnessSite.felhasznalo.FelhasznaloRepository;
 import hu.nye.fitnessSite.futas.Futas;
 import hu.nye.fitnessSite.futas.Helye;
 import hu.nye.fitnessSite.kaloriaBevitel.KaloriaBevitel;
@@ -24,5 +25,17 @@ public class Main {
 	public static void main(String[] args) {
 
 		SpringApplication.run(Main.class, args);
+	}
+
+	@Bean
+	CommandLineRunner testFelh(FelhasznaloRepository repo){
+		return args -> {
+			Felhasznalo felhasznalo = new Felhasznalo(
+					null, "Péter", "Janklovics", "janklapics@magic.black", 45, 109
+			);
+			felhasznalo = repo.save(felhasznalo);
+			System.out.println("Mentett felhasználó id: " + felhasznalo.getId());
+
+		};
 	}
 }
