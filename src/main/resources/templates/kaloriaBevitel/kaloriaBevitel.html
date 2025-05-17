@@ -6,7 +6,25 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<h1>Kalória égetős cuccos</h1>
-<p>Mindenki ég</p>
+<h1>Kalória bevitel táblázat</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Felhasználó Id</th>
+        <th>Zsír</th>
+        <th>Szénhidrát</th>
+        <th>Fehérje</th>
+        <th>Víz</th>
+    </tr>
+    <tr th:each="kaloria_bevitel : ${kaloria}">
+        <td th:text="${kaloria_bevitel.id}">ID</td>
+        <td th:text="${kaloria_bevitel.felhasznalo.id}">Felhasználó ID</td>
+        <td th:text="${kaloria_bevitel.zsir} + 'g'">Zsírok</td>
+        <td th:text="${kaloria_bevitel.szenhidrat} + 'g'">Szénhidrát</td>
+        <td th:text="${kaloria_bevitel.feherje} + 'g'">Fehérje</td>
+        <td th:text="${kaloria_bevitel.viz} + 'ml'"></td>
+    </tr>
+</table>
+<a th:href="@{/}">Vissza a főoldalra</a>
 </body>
 </html>
