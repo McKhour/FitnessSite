@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/felhasznalo")
+@RequestMapping("/felhasznalo")
 public class FelhasznaloRestController {
 
     private final FelhasznaloRepository felhasznaloRepository;

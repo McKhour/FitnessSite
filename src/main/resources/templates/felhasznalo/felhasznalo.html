@@ -6,7 +6,26 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<h1>Add meg a nevedet nálam jóban van :3</h1>
-<p>A nevem Senki</p>
+<h1>Felhasználók listája</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Keresztnév</th>
+        <th>Vezetéknév</th>
+        <th>email</th>
+        <th>Életkor</th>
+        <th>Test súly</th>
+    </tr>
+    <tr th:each="felhasznalo : ${felhasznalok}">
+        <td th:text="${felhasznalo.id}">ID</td>
+        <td th:text="${felhasznalo.keresztNev}">Keresztnév</td>
+        <td th:text="${felhasznalo.vezetekNev}">Vezetéknév</td>
+        <td th:text="${felhasznalo.email}">E-mail cím</td>
+        <td th:text="${felhasznalo.eletkor}">Életkor</td>
+        <td th:text="${felhasznalo.testSuly}">Test súly</td>
+
+    </tr>
+</table>
+<a th:href="@{/}">Vissza a főoldalra</a>
 </body>
 </html>
