@@ -6,7 +6,25 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<h1>Súlyos teszt</h1>
-<p>EMELD</p>
+<h1>Súly emelés táblázat</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Felhasználó Id</th>
+        <th>Suly</th>
+        <th>Szettek</th>
+        <th>Repek</th>
+        <th>Típusa</th>
+    </tr>
+    <tr th:each="suly_emeles : ${suly}">
+        <td th:text="${suly_emeles.id}">ID</td>
+        <td th:text="${suly_emeles.felhasznalo.id}">Felhasználó ID</td>
+        <td th:text="${suly_emeles.suly}">Súly</td>
+        <td th:text="${suly_emeles.szettek}">Szettek</td>
+        <td th:text="${suly_emeles.repek}">Repek</td>
+        <td th:text="${suly_emeles.tipusa}">Típusa</td>
+    </tr>
+</table>
+<a th:href="@{/}">Vissza a főoldalra</a>
 </body>
 </html>
