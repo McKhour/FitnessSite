@@ -1,5 +1,6 @@
 package hu.nye.fitnessSite.sulyEmeles;
 
+import hu.nye.fitnessSite.kaloriaBevitel.KaloriaBevitel;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -27,35 +28,60 @@ public class SulyEmelesRestController {
     SulyEmeles findById(@PathVariable Long id){
         Optional<SulyEmeles> suly = sulyEmelesRepository.findById(id);
         if (suly.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Súly emelés nem található");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nem található ilyen bejegyzés");
         }
         return suly.get();
     }
 
+    public List<SulyEmeles> findByUId(@PathVariable Long felhasznaloId){
+        List<SulyEmeles> suly = sulyEmelesRepository.findByFelhasznalo_Id(felhasznaloId);
+        if (suly.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nem található ilyen bejegyzés");
+        }
+        return suly;
+    }
+
     //post
-    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
-    void create(@Valid @RequestBody SulyEmeles suly)
-    {
-        sulyEmelesRepository.create(suly);
-
+    @ResponseStatus(HttpStatus.CREATED)
+    void create(@Valid @RequestBody SulyEmeles suly){
+        sulyEmelesRepository.save(suly);
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    //put
     @PutMapping("/{id}")
-    void update(@Valid @RequestBody SulyEmeles suly, @PathVariable Long id){
-        sulyEmelesRepository.update(suly, id);
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    void put(@Valid @RequestBody SulyEmeles suly, @PathVariable Long id){
+        Optional<SulyEmeles> optionalExisting = sulyEmelesRepository.findById(id);
+        if (optionalExisting.isPresent()){
+            SulyEmeles existing = optionalExisting.get();
+            if (suly.getFelhasznalo() != null){
+                existing.setFelhasznalo(suly.getFelhasznalo());
+            }
+            if (suly.getSuly() != null){
+                existing.setSuly(suly.getSuly());
+            }
+            if (suly.getSzettek() != null){
+                existing.setSzettek(suly.getSzettek());
+            }
+            if (suly.getRepek() != null){
+                existing.setRepek(suly.getRepek());
+            }
+            if (suly.getTipusa() != null){
+                existing.setTipusa(suly.getTipusa());
+            }
+            sulyEmelesRepository.save(existing);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nem létezik ilyen bejegyzés");
+        }
     }
-
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    //delete
     @DeleteMapping("/{id}")
-    void delete(@PathVariable Long id)
-    {
-        sulyEmelesRepository.delete(id);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void delete(@Valid @RequestBody @PathVariable Long id){
+        if (!sulyEmelesRepository.existsById(id)){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Nem található ilyen bejegyzés");
+        }
+        sulyEmelesRepository.deleteById(id);
     }
-
-    //@GetMapping("/sulyEmeles")
-    //String sulyEmeles(){
-    //    return "Ez itt a súly emelés helye";
-    //}
 }

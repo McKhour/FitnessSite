@@ -6,7 +6,9 @@ import hu.nye.fitnessSite.futas.Futas;
 import hu.nye.fitnessSite.futas.FutasRepository;
 import hu.nye.fitnessSite.futas.Helye;
 import hu.nye.fitnessSite.kaloriaBevitel.KaloriaBevitel;
+import hu.nye.fitnessSite.kaloriaBevitel.KaloriaBevitelRepository;
 import hu.nye.fitnessSite.sulyEmeles.SulyEmeles;
+import hu.nye.fitnessSite.sulyEmeles.SulyEmelesRepository;
 import hu.nye.fitnessSite.sulyEmeles.Tipusa;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +31,7 @@ public class Main {
 	}
 
 	@Bean
-	CommandLineRunner testFelh(FelhasznaloRepository felhasznaloRepo, FutasRepository futasRepo){
+	CommandLineRunner testFelh(FelhasznaloRepository felhasznaloRepo, FutasRepository futasRepo, KaloriaBevitelRepository bevitelRepo, SulyEmelesRepository sulyRepo){
 		return args -> {
 			Felhasznalo felhasznalo = new Felhasznalo();
 			felhasznalo.setId(null);
@@ -52,6 +54,26 @@ public class Main {
 
 			futas = futasRepo.save(futas);
 			System.out.println("A mentett futás címe: " + futas.getFutasCim());
+
+			KaloriaBevitel bevitel = new KaloriaBevitel();
+			bevitel.setFelhasznalo(felhasznalo);
+			bevitel.setZsir(12);
+			bevitel.setSzenhidrat(132);
+			bevitel.setFeherje(78);
+			bevitel.setViz(125);
+
+			bevitel = bevitelRepo.save(bevitel);
+			System.out.println("Kalória Bevitel feltöltve");
+
+			SulyEmeles suly = new SulyEmeles();
+			suly.setFelhasznalo(felhasznalo);
+			suly.setSuly(100);
+			suly.setSzettek(15);
+			suly.setRepek(20);
+			suly.setTipusa(Tipusa.KETKEZES);
+
+			suly = sulyRepo.save(suly);
+			System.out.println("Súly emelés feltöltve");
 		};
 	}
 }
