@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/kaloriaBevitel")
+@RequestMapping("/api/kaloriabevitel")
     public class KaloriaBevitelRestController {
 
     private final KaloriaBevitelRepository kaloriaBevitelRepository;
@@ -19,42 +19,69 @@ import java.util.Optional;
     }
 
     @GetMapping("")
-    List<KaloriaBevitel> findAll(){
+    List<KaloriaBevitel> findAll() {
         return kaloriaBevitelRepository.findAll();
     }
 
     @GetMapping("/{id}")
     KaloriaBevitel findById(@PathVariable Long id){
-        Optional<KaloriaBevitel> kaloriaBevitel = kaloriaBevitelRepository.findById(id);
-        if (kaloriaBevitel.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Kalóriabevitel nem található");
+        Optional<KaloriaBevitel> bevitel = kaloriaBevitelRepository.findById(id);
+        if (bevitel.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nincs ilyen kalória bevitel");
         }
-        return kaloriaBevitel.get();
+        return bevitel.get();
+    }
+
+    public List<KaloriaBevitel> findByUId(@PathVariable Long felhasznaloId){
+        List<KaloriaBevitel> bevitel = kaloriaBevitelRepository.findByFelhasznalo_Id(felhasznaloId);
+        if (bevitel.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Ennek a felhasználónak még nincs ilyenje");
+        }
+        return bevitel;
     }
 
     //post
-    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
-    void create(@Valid @RequestBody KaloriaBevitel kaloriaBevitel)
-    {
-        kaloriaBevitelRepository.create(kaloriaBevitel);
-    }
-    //updte
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @PutMapping("/{id}")
-    void update(@Valid @RequestBody KaloriaBevitel kaloriaBevitel, @PathVariable Long id){
-        kaloriaBevitelRepository.update(kaloriaBevitel, id);
-    }
-    //delete
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{id}")
-    void delete(@PathVariable Long id)
-    {
-        kaloriaBevitelRepository.delete(id);
+    @ResponseStatus(HttpStatus.CREATED)
+    void create(@Valid @RequestBody KaloriaBevitel bevitel){
+        kaloriaBevitelRepository.save(bevitel);
     }
 
-    //@GetMapping("/kaloriaBevitel")
-    //String kaloria(){
-    //    return "Ez itt a kalória oldala";
-    //}
+    //put
+    @PostMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    void put(@Valid @RequestBody KaloriaBevitel bevitel, @PathVariable Long id){
+        Optional<KaloriaBevitel> optionalExisting = kaloriaBevitelRepository.findById(id);
+        if (optionalExisting.isPresent()){
+            KaloriaBevitel existing = optionalExisting.get();
+            if (bevitel.getFelhasznalo() != null){
+                existing.setFelhasznalo(bevitel.getFelhasznalo());
+            }
+            if (bevitel.getZsir() != null){
+                existing.setZsir(bevitel.getZsir());
+            }
+            if (bevitel.getSzenhidrat() != null){
+                existing.setSzenhidrat(bevitel.getSzenhidrat());
+            }
+            if (bevitel.getFeherje() != null){
+                existing.setFeherje(bevitel.getFeherje());
+            }
+            if (bevitel.getViz() != null){
+                existing.setViz(bevitel.getViz());
+            }
+            kaloriaBevitelRepository.save(existing);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nem létezik ilyen bejegyzés");
+        }
+    }
+
+    //delete
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void delete(@Valid @RequestBody @PathVariable Long id){
+        if (!kaloriaBevitelRepository.existsById(id)){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "A keresett bejegyzés nem létezik");
+        }
+        kaloriaBevitelRepository.deleteById(id);
+    }
 }

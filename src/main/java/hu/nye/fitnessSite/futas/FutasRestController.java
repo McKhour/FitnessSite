@@ -86,7 +86,7 @@ public class FutasRestController {
     void delete(@PathVariable @RequestBody @Valid Long id)
     {
         if (!futasRepository.existsById(id)){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nincs ilyen futás");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "A keresett bejegyzés nem létezik");
         }
         futasRepository.deleteById(id);
     }
