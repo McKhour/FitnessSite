@@ -3,6 +3,7 @@ package hu.nye.fitnessSite;
 import hu.nye.fitnessSite.felhasznalo.Felhasznalo;
 import hu.nye.fitnessSite.felhasznalo.FelhasznaloRepository;
 import hu.nye.fitnessSite.futas.Futas;
+import hu.nye.fitnessSite.futas.FutasRepository;
 import hu.nye.fitnessSite.futas.Helye;
 import hu.nye.fitnessSite.kaloriaBevitel.KaloriaBevitel;
 import hu.nye.fitnessSite.sulyEmeles.SulyEmeles;
@@ -28,14 +29,29 @@ public class Main {
 	}
 
 	@Bean
-	CommandLineRunner testFelh(FelhasznaloRepository repo){
+	CommandLineRunner testFelh(FelhasznaloRepository felhasznaloRepo, FutasRepository futasRepo){
 		return args -> {
-			Felhasznalo felhasznalo = new Felhasznalo(
-					null, "Péter", "Janklovics", "janklapics@magic.black", 45, 109
-			);
-			felhasznalo = repo.save(felhasznalo);
+			Felhasznalo felhasznalo = new Felhasznalo();
+			felhasznalo.setId(null);
+			felhasznalo.setKeresztNev("Péter");
+			felhasznalo.setVezetekNev("Janklovics");
+			felhasznalo.setEmail("janklapics@magic.black");
+			felhasznalo.setEletkor(45);
+			felhasznalo.setTestSuly(109);
+
+			felhasznalo = felhasznaloRepo.save(felhasznalo);
 			System.out.println("Mentett felhasználó id: " + felhasznalo.getId());
 
+			Futas futas = new Futas();
+			futas.setFelhasznalo(felhasznalo);
+			futas.setFutasCim("Reggeli kocogás");
+			futas.setFutasKezd(LocalDateTime.now());
+			futas.setFutasVeg(LocalDateTime.now().plusMinutes(30));
+			futas.setKilometer(1.5);
+			futas.setHelye(Helye.KINT);
+
+			futas = futasRepo.save(futas);
+			System.out.println("A mentett futás címe: " + futas.getFutasCim());
 		};
 	}
 }
