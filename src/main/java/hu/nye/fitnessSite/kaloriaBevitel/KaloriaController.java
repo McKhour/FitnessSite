@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class KaloriaController {
 
     @GetMapping("")
-    public String futas(){
+    public String kaloriaBevitel(){
         return "kaloriaBevitel/kaloriaBevitel";
     }
 }

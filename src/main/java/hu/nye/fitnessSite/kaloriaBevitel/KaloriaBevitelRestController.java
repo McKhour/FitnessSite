@@ -32,6 +32,7 @@ import java.util.Optional;
         return bevitel.get();
     }
 
+    @GetMapping("/felhasznalo/{felhasznaloId}")
     public List<KaloriaBevitel> findByUId(@PathVariable Long felhasznaloId){
         List<KaloriaBevitel> bevitel = kaloriaBevitelRepository.findByFelhasznalo_Id(felhasznaloId);
         if (bevitel.isEmpty()){
@@ -48,7 +49,7 @@ import java.util.Optional;
     }
 
     //put
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     void put(@Valid @RequestBody KaloriaBevitel bevitel, @PathVariable Long id){
         Optional<KaloriaBevitel> optionalExisting = kaloriaBevitelRepository.findById(id);
@@ -76,9 +77,8 @@ import java.util.Optional;
     }
 
     //delete
-    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void delete(@Valid @RequestBody @PathVariable Long id){
+    void delete(@PathVariable Long id){
         if (!kaloriaBevitelRepository.existsById(id)){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "A keresett bejegyzés nem létezik");
         }

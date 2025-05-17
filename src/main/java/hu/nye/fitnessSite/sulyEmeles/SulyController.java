@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/sulyEmeles")
 public class SulyController {
     @GetMapping("")
-    public String futas(){
+    public String sulyEmeles(){
         return "sulyEmeles/sulyEmeles";
     }
 }

@@ -19,6 +19,7 @@ public class SulyEmeles{
         private Integer szettek;
         @Positive
         private Integer repek;
+        @Enumerated(EnumType.STRING)
         private Tipusa tipusa;
 
         public SulyEmeles(){}

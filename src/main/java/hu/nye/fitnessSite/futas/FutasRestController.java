@@ -33,6 +33,7 @@ public class FutasRestController {
         return futas.get();
     }
 
+    @GetMapping("/felhasznalo/{felhasznalo_id}")
     public List<Futas> findByUId(@PathVariable Long felhasznaloId){
         List<Futas> futas = futasRepository.findByFelhasznalo_Id(felhasznaloId);
         if (futas.isEmpty()){
@@ -82,8 +83,7 @@ public class FutasRestController {
 
     //delete
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{id}")
-    void delete(@PathVariable @RequestBody @Valid Long id)
+    void delete(@PathVariable Long id)
     {
         if (!futasRepository.existsById(id)){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "A keresett bejegyzés nem létezik");

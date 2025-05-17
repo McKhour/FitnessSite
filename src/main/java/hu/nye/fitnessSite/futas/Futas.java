@@ -18,6 +18,7 @@ public class Futas{
     private LocalDateTime futasKezd;
     private LocalDateTime futasVeg;
     private Double kilometer;
+    @Enumerated(EnumType.STRING)
     private Helye helye;
 
     public Futas(){}

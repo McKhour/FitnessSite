@@ -33,6 +33,7 @@ public class SulyEmelesRestController {
         return suly.get();
     }
 
+    @GetMapping("/felhasznalo/{felhasznaloId}")
     public List<SulyEmeles> findByUId(@PathVariable Long felhasznaloId){
         List<SulyEmeles> suly = sulyEmelesRepository.findByFelhasznalo_Id(felhasznaloId);
         if (suly.isEmpty()){
@@ -76,9 +77,8 @@ public class SulyEmelesRestController {
         }
     }
     //delete
-    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void delete(@Valid @RequestBody @PathVariable Long id){
+    void delete(@PathVariable Long id){
         if (!sulyEmelesRepository.existsById(id)){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Nem található ilyen bejegyzés");
         }

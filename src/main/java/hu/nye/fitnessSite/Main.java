@@ -29,12 +29,12 @@ public class Main {
 
 		SpringApplication.run(Main.class, args);
 	}
-
+	/*
 	@Bean
 	CommandLineRunner testFelh(FelhasznaloRepository felhasznaloRepo, FutasRepository futasRepo, KaloriaBevitelRepository bevitelRepo, SulyEmelesRepository sulyRepo){
 		return args -> {
 			Felhasznalo felhasznalo = new Felhasznalo();
-			felhasznalo.setId(null);
+			//felhasznalo.setId(null);
 			felhasznalo.setKeresztNev("Péter");
 			felhasznalo.setVezetekNev("Janklovics");
 			felhasznalo.setEmail("janklapics@magic.black");
@@ -76,4 +76,6 @@ public class Main {
 			System.out.println("Súly emelés feltöltve");
 		};
 	}
+
+	 */
 }

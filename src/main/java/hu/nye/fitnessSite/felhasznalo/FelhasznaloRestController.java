@@ -68,8 +68,7 @@ public class FelhasznaloRestController {
     }
     //delete
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{id}")
-    void delete(@Valid @RequestBody @PathVariable Long id) {
+    void delete(@PathVariable Long id) {
         if (!felhasznaloRepository.existsById(id)){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "A felhaszználó nem találhtó!");
         }
