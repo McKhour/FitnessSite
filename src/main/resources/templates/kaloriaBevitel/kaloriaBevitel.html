@@ -15,6 +15,8 @@
         <th>Szénhidrát</th>
         <th>Fehérje</th>
         <th>Víz</th>
+        <th>Szerkeszt</th>
+        <th>Törlés</th>
     </tr>
     <tr th:each="kaloria_bevitel : ${kaloria}">
         <td th:text="${kaloria_bevitel.id}">ID</td>
@@ -23,8 +25,16 @@
         <td th:text="${kaloria_bevitel.szenhidrat} + 'g'">Szénhidrát</td>
         <td th:text="${kaloria_bevitel.feherje} + 'g'">Fehérje</td>
         <td th:text="${kaloria_bevitel.viz} + 'ml'"></td>
+        <td>
+            <a th:href="@{'/kaloriaBevitel/szerkeszt/' + ${kaloria_bevitel.id}}">Szerkesztés</a>
+        </td>
+        <td>
+            <a th:href="@{/kaloriaBevitel/torol/{id}(id=${kaloria_bevitel.id})}" class="btn btn-danger">Törlés</a>
+        </td>
     </tr>
 </table>
+<a th:href="@{/kaloriaBevitel/uj}">Új kalória bevitel hozzá adása</a>
+<p></p>
 <a th:href="@{/}">Vissza a főoldalra</a>
 </body>
 </html>

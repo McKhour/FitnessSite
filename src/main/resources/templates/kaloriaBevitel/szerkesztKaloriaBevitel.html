@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalória szerkesztése</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Kalória szerkesztés</h1>
+<form th:action="@{/kaloriaBevitel/szerkeszt}"
+      th:object="${kaloria}" method="post">
+  <table>
+    <input type="hidden" th:field="*{id}">
+    <tr>
+      <td><label for="felhasznalo">Felhasználó</label></td>
+      <td>
+        <select id="felhasznalo" th:field="*{felhasznalo}" required>
+          <option th:each="felhasznalo : ${felhasznalok}"
+                  th:value="${felhasznalo.id}"
+                  th:text="${felhasznalo.keresztNev + ' ' + felhasznalo.vezetekNev}">
+          </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="zsir"></label>Zsír (gram)</td>
+      <td><input type="number" id="zsir" th:field="*{zsir}" required></td>
+    </tr>
+    <tr>
+      <td><label for="szenhidrat">Szénhidrát (gram)</label></td>
+      <td><input type="number" id="szenhidrat" th:field="*{szenhidrat}" required></td>
+    </tr>
+    <tr>
+      <td><label for="feherje">Fehérje (gram)</label></td>
+      <td><input type="number" id="feherje" th:field="*{feherje}" required></td>
+    </tr>
+    <tr>
+      <td><label for="viz">Víz (ml)</label></td>
+      <td><input type="number" id="viz" th:field="*{viz}" required></td>
+    </tr>
+    <td><button type="submit">Frissítés</button></td>
+  </table>
+</form>
+
+<a th:href="@{kaloriaBevitel/list}">Vissza a listához</a>
+<p></p>
+<a th:href="@{/}">Főoldal</a>
+</body>
+</html>

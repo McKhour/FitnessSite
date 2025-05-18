@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalória törlése</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Kalória törlése</h1>
+
+<p>Biztosan törölni szeretné a következő futást?</p>
+
+<ul>
+    <li><strong>ID</strong> <span th:text="${kaloria.id}"></span></li>
+    <li><strong>Felhasználó</strong> <span th:text="${kaloria.felhasznalo.vezetekNev + ' ' + kaloria.felhasznalo.keresztNev}"></span></li>
+    <li><strong>Zsír</strong><span th:text="${kaloria.zsir}"></span></li>
+    <li><strong>Szénhidrát</strong><span th:text="${kaloria.szenhidrat}"></span></li>
+    <li><strong>Fehérje</strong><span th:text="${kaloria.feherje}"></span></li>
+    <li><strong>Víz</strong><span th:text="${kaloria.viz}"></span></li>
+</ul>
+<form th:action="@{'/kaloriaBevitel/torol/' + ${kaloria.id}}" method="post">
+    <button type="submit">Törlés megerősítése</button>
+</form>
+
+<br>
+<a th:href="@{/kaloriaBevitel/list}">Mégsem - Vissza a listához</a>
+</body>
+</html>
