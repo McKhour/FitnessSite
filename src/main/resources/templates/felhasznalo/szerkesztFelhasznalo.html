@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Felhasználó szerkesztése</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Felhasználó szerkesztése</h1>
+
+<form th:action="@{/felhasznalo/szerkeszt}"
+      th:object="${felhasznalo}" method="post">
+  <table>
+  <!-- PUT küldéséhez Springnél hidden _method mező -->
+  <input type="hidden" th:field="*{id}"/>
+<tr>
+  <td><label for="keresztNev">Keresztnév:</label></td>
+  <td><input type="text" id="keresztNev" th:field="*{keresztNev}" required><br></td>
+</tr>
+    <tr>
+      <td><label for="vezetekNev">Vezetéknév:</label></td>
+      <td><input type="text" id="vezetekNev" th:field="*{vezetekNev}" required><br></td>
+    </tr>
+    <tr>
+      <td><label for="email">Email:</label></td>
+      <td><input type="email" id="email" th:field="*{email}" required><br></td>
+    </tr>
+    <tr>
+      <td><label for="eletkor">Életkor:</label></td>
+      <td><input type="number" id="eletkor" th:field="*{eletkor}" required><br></td>
+    </tr>
+    <tr>
+      <td><label for="testSuly">Testsúly (kg):</label></td>
+      <td><input type="number" id="testSuly" th:field="*{testSuly}" required><br></td>
+    </tr>
+    <td><button type="submit">Frissítés</button></td>
+  </table>
+</form>
+
+<a th:href="@{/felhasznalo/list}">Vissza a listához</a>
+<p></p>
+<a th:href="@{/}">Főoldal</a>
+</body>
+</html>

@@ -4,8 +4,7 @@ import hu.nye.fitnessSite.felhasznalo.FelhasznaloRestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,17 +12,56 @@ import java.util.List;
 @RequestMapping("/felhasznalo")
 public class FelhasznaloController {
 
-    private final FelhasznaloRestController felhasznaloRest;
-
     @Autowired
-    public FelhasznaloController(FelhasznaloRestController felhasznaloRest) {
-        this.felhasznaloRest = felhasznaloRest;
+    private final FelhasznaloServices felhasznaloServices;
+
+    public FelhasznaloController(FelhasznaloServices service) {
+        this.felhasznaloServices = service;
     }
 
     @GetMapping("/list")
-    public String felhasznaloList(Model model){
-        List<Felhasznalo> felhasz = felhasznaloRest.findAll();
+    public String getAllFelhaszn(Model model){
+        List<Felhasznalo> felhasz = felhasznaloServices.getAllFelhaszn();
         model.addAttribute("felhasznalok", felhasz);
         return "felhasznalo/felhasznalo";
+    }
+
+    @GetMapping("/uj")
+    public String ujFelhasznaloForm(Model model) {
+        model.addAttribute("felhasznalo", new Felhasznalo());
+        return "felhasznalo/ujFelhasznalo";
+    }
+
+    @PostMapping("/uj")
+    public String mentes(@ModelAttribute Felhasznalo felhasznalo) {
+        felhasznaloServices.save(felhasznalo); // Meghívja a REST controllert
+        return "redirect:/felhasznalo/list";
+    }
+
+    @GetMapping("/szerkeszt/{id}")
+    public String szerkesztFelhasznForm(@PathVariable Long id, Model model){
+        Felhasznalo felhasznalo = felhasznaloServices.findById(id);
+        model.addAttribute("felhasznalo", felhasznalo);
+        return "felhasznalo/szerkesztFelhasznalo";
+    }
+
+    @PostMapping("/szerkeszt")
+    public String frissitFelhaszn(@ModelAttribute Felhasznalo felhasznalo){
+        felhasznaloServices.edit(felhasznalo);
+        return "redirect:/felhasznalo/list";
+    }
+
+    @GetMapping("/torol/{id}")
+    public String torlesMegerosites(@PathVariable Long id, Model model) {
+        Felhasznalo felhasznalo = felhasznaloServices.findById(id);
+        model.addAttribute("felhasznalo", felhasznalo);
+        return "felhasznalo/torolFelhasznalo";
+    }
+
+
+    @PostMapping("/torol/{id}")
+    public String deleteFelhaszn(@PathVariable Long id){
+        felhasznaloServices.deleteById(id);
+        return "redirect:/felhasznalo/list";
     }
 }

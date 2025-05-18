@@ -1,31 +1,40 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Felhasználók</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
-</head>
-<body>
-<h1>Felhasználók listája</h1>
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Keresztnév</th>
-        <th>Vezetéknév</th>
-        <th>email</th>
-        <th>Életkor</th>
-        <th>Test súly</th>
-    </tr>
-    <tr th:each="felhasznalo : ${felhasznalok}">
-        <td th:text="${felhasznalo.id}">ID</td>
-        <td th:text="${felhasznalo.keresztNev}">Keresztnév</td>
-        <td th:text="${felhasznalo.vezetekNev}">Vezetéknév</td>
-        <td th:text="${felhasznalo.email}">E-mail cím</td>
-        <td th:text="${felhasznalo.eletkor}">Életkor</td>
-        <td th:text="${felhasznalo.testSuly}">Test súly</td>
-
-    </tr>
-</table>
-<a th:href="@{/}">Vissza a főoldalra</a>
-</body>
-</html>
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Felhasználók</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+    </head>
+    <body>
+    <h1>Felhasználók listája</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Keresztnév</th>
+            <th>Vezetéknév</th>
+            <th>email</th>
+            <th>Életkor</th>
+            <th>Test súly</th>
+            <th>Szerkesztés</th>
+            <th>Törlés</th>
+        </tr>
+        <tr th:each="felhasznalo : ${felhasznalok}">
+            <td th:text="${felhasznalo.id}">ID</td>
+            <td th:text="${felhasznalo.keresztNev}">Keresztnév</td>
+            <td th:text="${felhasznalo.vezetekNev}">Vezetéknév</td>
+            <td th:text="${felhasznalo.email}">E-mail cím</td>
+            <td th:text="${felhasznalo.eletkor}">Életkor</td>
+            <td th:text="${felhasznalo.testSuly}">Test súly</td>
+            <td>
+                <a th:href="@{'/felhasznalo/szerkeszt/' + ${felhasznalo.id}}">Szerkesztés</a>
+            </td>
+            <td>
+                <a th:href="@{/felhasznalo/torol/{id}(id=${felhasznalo.id})}" class="btn btn-danger">Törlés</a>
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{/felhasznalo/uj}">Új felhasználó hozzá adása</a>
+    <p></p>
+    <a th:href="@{/}">Vissza a főoldalra</a>
+    </body>
+    </html>

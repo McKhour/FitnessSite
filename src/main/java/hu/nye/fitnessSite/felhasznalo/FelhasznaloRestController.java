@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/felhasznalo")
+@RequestMapping("/api/felhasznalo")
 public class FelhasznaloRestController {
 
     private final FelhasznaloRepository felhasznaloRepository;
@@ -67,6 +67,7 @@ public class FelhasznaloRestController {
 
     }
     //delete
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void delete(@PathVariable Long id) {
         if (!felhasznaloRepository.existsById(id)){

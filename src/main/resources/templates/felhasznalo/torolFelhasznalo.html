@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Felhasználó törlése</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Felhasználó törlése</h1>
+
+<p>Biztosan törölni szeretnéd a következő felhasználót?</p>
+
+<table>
+<tr><ul>
+    <li><strong>ID:</strong> <span th:text="${felhasznalo.id}"></span></li>
+    <li><strong>Név:</strong> <span th:text="${felhasznalo.vezetekNev + ' ' + felhasznalo.keresztNev}"></span></li>
+    <li><strong>Email:</strong> <span th:text="${felhasznalo.email}"></span></li>
+    <li><strong>Életkor:</strong> <span th:text="${felhasznalo.eletkor}"></span></li>
+    <li><strong>Testsúly:</strong> <span th:text="${felhasznalo.testSuly}"></span></li>
+</ul>
+</tr>
+</table>
+<form th:action="@{'/felhasznalo/torol/' + ${felhasznalo.id}}" method="post">
+    <button type="submit">Törlés megerősítése</button>
+</form>
+
+<br>
+<a th:href="@{/felhasznalo/list}">Mégsem – Vissza a listához</a>
+</body>
+</html>

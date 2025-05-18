@@ -1,6 +1,12 @@
 package hu.nye.fitnessSite.felhasznalo;
 
+import hu.nye.fitnessSite.futas.Futas;
+import hu.nye.fitnessSite.kaloriaBevitel.KaloriaBevitel;
+import hu.nye.fitnessSite.sulyEmeles.SulyEmeles;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Felhasznalok")
@@ -13,6 +19,15 @@ public class Felhasznalo{
         private String email;
         private Integer eletkor;
         private Integer testSuly;
+
+        @OneToMany(mappedBy = "felhasznalo", cascade = CascadeType.ALL, orphanRemoval = true)
+        private List<Futas> futasok = new ArrayList<>();
+
+        @OneToMany(mappedBy = "felhasznalo", cascade = CascadeType.ALL, orphanRemoval = true)
+        private List<SulyEmeles> sulyemelesek = new ArrayList<>();
+
+        @OneToMany(mappedBy = "felhasznalo", cascade = CascadeType.ALL, orphanRemoval = true)
+        private List<KaloriaBevitel> kaloriaBevitelek = new ArrayList<>();
 
         public Felhasznalo(){}
 
@@ -79,5 +94,29 @@ public class Felhasznalo{
 
         public void setTestSuly(Integer testSuly) {
                 this.testSuly = testSuly;
+        }
+
+        public List<Futas> getFutasok() {
+                return futasok;
+        }
+
+        public void setFutasok(List<Futas> futasok) {
+                this.futasok = futasok;
+        }
+
+        public List<SulyEmeles> getSulyemelesek() {
+                return sulyemelesek;
+        }
+
+        public void setSulyemelesek(List<SulyEmeles> sulyemelesek) {
+                this.sulyemelesek = sulyemelesek;
+        }
+
+        public List<KaloriaBevitel> getKaloriaBevitelek() {
+                return kaloriaBevitelek;
+        }
+
+        public void setKaloriaBevitelek(List<KaloriaBevitel> kaloriaBevitelek) {
+                this.kaloriaBevitelek = kaloriaBevitelek;
         }
 }
