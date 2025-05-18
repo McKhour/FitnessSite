@@ -12,7 +12,7 @@ public class Futas{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "felhasznalo_id", referencedColumnName = "id")
+    @JoinColumn(name = "felhasznalo_id", referencedColumnName = "id", nullable = false)
     private Felhasznalo felhasznalo;
     private String futasCim;
     private LocalDateTime futasKezd;

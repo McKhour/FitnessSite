@@ -16,17 +16,27 @@
         <th>Futás vége</th>
         <th>Távolság (kilométer)</th>
         <th>Futás helye (Bent vagy Kint)</th>
+        <th>Szerkesztés</th>
+        <th>Törlés</th>
     </tr>
     <tr th:each="futas : ${futok}">
         <td th:text="${futas.id}">ID</td>
-        <td th:text="${futas.felhasznalo.id}">Felhasználó ID</td>
+        <td th:text="${futas.felhasznalo != null ? futas.felhasznalo.id : 'Nincs felhasználó'}">Felhasználó ID</td>
         <td th:text="${futas.futasCim}">Futás neve</td>
         <td th:text="${futas.futasKezd}">Futás kezdete</td>
         <td th:text="${futas.futasVeg}">Futás vége</td>
         <td th:text="${futas.kilometer} + 'km'">Távolság (kilométerben)</td>
         <td th:text="${futas.helye}">Futás helye(bent/kint)</td>
+        <td>
+            <a th:href="@{'/futas/szerkeszt/' + ${futas.id}}">Szerkesztés</a>
+        </td>
+        <td>
+            <a th:href="@{/futas/torol/{id}(id=${futas.id})}" class="btn btn-danger">Törlés</a>
+        </td>
     </tr>
 </table>
+<a th:href="@{/futas/uj}">Új futás hozzá adása</a>
+<p></p>
 <a th:href="@{/}">Vissza a főoldalra</a>
 </body>
 </html>

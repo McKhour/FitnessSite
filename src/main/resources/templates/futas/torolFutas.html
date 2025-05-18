@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Futás törlése</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Felhasználó törlése</h1>
+
+<p>Biztosan törölni szeretné a következő futást?</p>
+
+<ul>
+    <li><strong>ID</strong> <span th:text="${futo.id}"></span></li>
+    <li><strong>Felhasználó</strong> <span th:text="${futo.felhasznalo.vezetekNev + ' ' + futo.felhasznalo.keresztNev}"></span></li>
+    <li><strong>Futás címe</strong> <span th:text="${futo.futasCim}"></span></li>
+    <li><strong>Futás kezdete</strong> <span th:text="${futo.futasKezd}"></span></li>
+    <li><strong>Futás vége</strong> <span th:text="${futo.futasVeg}"></span></li>
+    <li><strong>Kilóméter</strong> <span th:text="${futo.kilometer}"></span></li>
+    <li><strong>Helye</strong> <span th:text="${futo.helye}"></span></li>
+</ul>
+<form th:action="@{'/futas/torol/' + ${futo.id}}" method="post">
+    <button type="submit">Törlés megerősítése</button>
+</form>
+
+<br>
+<a th:href="@{/futas/list}">Mégsem - Vissza a listához</a>
+</body>
+</html>

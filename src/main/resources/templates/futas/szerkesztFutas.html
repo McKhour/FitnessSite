@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Futás szerkesztése</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Futás szerkesztése</h1>
+<form th:action="@{/futas/szerkeszt}"
+      th:object="${futo}" method="post">
+    <table>
+        <input type="hidden" th:field="*{id}">
+        <tr>
+            <td><label for="felhasznalo">Felhasználó</label></td>
+            <td>
+                <select id="felhasznalo" th:field="*{felhasznalo}" required>
+                    <option th:each="felhasznalo : ${felhasznalok}"
+                            th:value="${felhasznalo.id}"
+                            th:text="${felhasznalo.keresztNev + ' ' + felhasznalo.vezetekNev}">
+                    </option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td><label for="futasCim">Futás címe</label></td>
+            <td><input type="text" id="futasCim" th:field="*{futasCim}" required><br></td>
+        </tr>
+        <tr>
+            <td><label for="futasKezd"></label>Futás kezdete</td>
+            <td><input type="datetime-local" id="futasKezd" th:field="*{futasKezd}" required><br></td>
+        </tr>
+        <tr>
+            <td><label for="futasVeg"></label>Futás vége</td>
+            <td><input type="datetime-local" id="futasVeg" th:field="*{futasVeg}" required><br></td>
+        </tr>
+        <tr>
+            <td><label for="kilometer"></label>Kilóméter</td>
+            <td><input type="number" id="kilometer" th:field="*{kilometer}" step="0.01" required><br></td>
+        </tr>
+        <tr>
+            <td><label for="helye">Helye</label></td>
+            <td><select id="helye" th:field="*{helye}" required>
+                <option th:value="BENT" th:text="Bent"></option>
+                <option th:value="KINT" th:text="Kint"></option>
+            </select><br>
+            </td>
+        </tr>
+        <td><button type="submit">Frissítés</button> </td>
+    </table>
+</form>
+
+<a th:href="@{/futas/list}">Vissza a listához</a>
+<p></p>
+<a th:href="@{/}">Főoldal</a>
+</body>
+</html>

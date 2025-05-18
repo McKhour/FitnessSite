@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Új Futás</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Új futás felvétele</h1>
+
+<form th:action="@{/futas/uj}" th:object="${futo}"  method="post">
+    <table>
+        <tr>
+            <td><label for="felhasznalo">Felhasználó</label></td>
+            <td>
+                <select id="felhasznalo" th:field="*{felhasznalo.id}" required>
+                    <option th:each="felh : ${felhasznalok}"
+                            th:value="${felh.id}"
+                            th:text="${felh.keresztNev + ' ' + felh.vezetekNev}">
+                    </option>
+                </select>
+                <br></td>
+        </tr>
+        <tr>
+            <td><label for="futasCim">Futás címe</label></td>
+            <td><input type="text" id="futasCim" th:field="*{futasCim}" required><br></td>
+        </tr>
+        <tr>
+            <td><label for="futasKezd"></label>Futás kezdete</td>
+            <td><input type="datetime-local" id="futasKezd" th:field="*{futasKezd}" required><br></td>
+        </tr>
+        <tr>
+            <td><label for="futasVeg"></label>Futás vége</td>
+            <td><input type="datetime-local" id="futasVeg" th:field="*{futasVeg}" required><br></td>
+        </tr>
+        <tr>
+            <td><label for="kilometer"></label>Kilóméter</td>
+            <td><input type="number" id="kilometer" th:field="*{kilometer}" step="0.01" required><br></td>
+        </tr>
+        <tr>
+            <td><label for="helye">Helye</label></td>
+            <td><select id="helye" th:field="*{helye}" required>
+                    <option th:value="BENT" th:text="Bent"></option>
+                    <option th:value="KINT" th:text="Kint"></option>
+                </select><br>
+            </td>
+        </tr>
+    </table>
+
+    <button type="submit">Mentés</button>
+</form>
+
+<a th:href="@{/futas/list}">Vissza a listához</a>
+<p></p>
+<a th:href="@{/}">Főoldal</a>
+</body>
+</html>
