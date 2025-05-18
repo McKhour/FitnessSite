@@ -3,10 +3,7 @@ package hu.nye.fitnessSite.felhasznalo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
+//sokat nem kell bele írni, így csak ennyi
 @Repository
 public interface FelhasznaloRepository extends JpaRepository<Felhasznalo, Long> {
 

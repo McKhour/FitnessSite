@@ -1,25 +1,11 @@
 package hu.nye.fitnessSite;
 
-import hu.nye.fitnessSite.felhasznalo.Felhasznalo;
-import hu.nye.fitnessSite.felhasznalo.FelhasznaloRepository;
-import hu.nye.fitnessSite.futas.Futas;
-import hu.nye.fitnessSite.futas.FutasRepository;
-import hu.nye.fitnessSite.futas.Helye;
-import hu.nye.fitnessSite.kaloriaBevitel.KaloriaBevitel;
-import hu.nye.fitnessSite.kaloriaBevitel.KaloriaBevitelRepository;
-import hu.nye.fitnessSite.sulyEmeles.SulyEmeles;
-import hu.nye.fitnessSite.sulyEmeles.SulyEmelesRepository;
-import hu.nye.fitnessSite.sulyEmeles.Tipusa;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
-
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 
 @SpringBootApplication
 public class Main {

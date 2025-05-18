@@ -11,7 +11,7 @@
     <tr>
         <th>ID</th>
         <th>Felhasználó Id</th>
-        <th>Suly</th>
+        <th>Suly (kg)</th>
         <th>Szettek</th>
         <th>Repek</th>
         <th>Típusa</th>
@@ -21,7 +21,7 @@
     <tr th:each="suly_emeles : ${sulyok}">
         <td th:text="${suly_emeles.id}">ID</td>
         <td th:text="${suly_emeles.felhasznalo.id}">Felhasználó ID</td>
-        <td th:text="${suly_emeles.suly}">Súly</td>
+        <td th:text="${suly_emeles.suly} + 'kg'">Súly</td>
         <td th:text="${suly_emeles.szettek}">Szettek</td>
         <td th:text="${suly_emeles.repek}">Repek</td>
         <td th:text="${suly_emeles.tipusa}">Típusa</td>

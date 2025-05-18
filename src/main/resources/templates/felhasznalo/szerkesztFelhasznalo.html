@@ -13,15 +13,15 @@
   <table>
   <!-- PUT küldéséhez Springnél hidden _method mező -->
   <input type="hidden" th:field="*{id}"/>
-<tr>
-  <td><label for="keresztNev">Keresztnév:</label></td>
-  <td><input type="text" id="keresztNev" th:field="*{keresztNev}" required><br></td>
-</tr>
     <tr>
       <td><label for="vezetekNev">Vezetéknév:</label></td>
       <td><input type="text" id="vezetekNev" th:field="*{vezetekNev}" required><br></td>
     </tr>
-    <tr>
+      <tr>
+          <td><label for="keresztNev">Keresztnév:</label></td>
+          <td><input type="text" id="keresztNev" th:field="*{keresztNev}" required><br></td>
+      </tr>
+      <tr>
       <td><label for="email">Email:</label></td>
       <td><input type="email" id="email" th:field="*{email}" required><br></td>
     </tr>

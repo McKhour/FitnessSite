@@ -2,7 +2,6 @@ package hu.nye.fitnessSite.sulyEmeles;
 
 import hu.nye.fitnessSite.felhasznalo.Felhasznalo;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
 
 @Entity

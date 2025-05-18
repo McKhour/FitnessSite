@@ -20,6 +20,7 @@ public class Felhasznalo{
         private Integer eletkor;
         private Integer testSuly;
 
+        //Mivel ezt használom fő kulcsként a táblázatban be kellet importálnom ezeket is
         @OneToMany(mappedBy = "felhasznalo", cascade = CascadeType.ALL, orphanRemoval = true)
         private List<Futas> futasok = new ArrayList<>();
 
@@ -29,8 +30,10 @@ public class Felhasznalo{
         @OneToMany(mappedBy = "felhasznalo", cascade = CascadeType.ALL, orphanRemoval = true)
         private List<KaloriaBevitel> kaloriaBevitelek = new ArrayList<>();
 
+        //külön üres konstruktór hogy JPA tudjon mivel dolgozni
         public Felhasznalo(){}
 
+        //Konstruktor ha nem kell ID-t megadni (Bean-elés)
         public Felhasznalo(String keresztNev, String vezetekNev, String email, Integer eletkor, Integer testSuly) {
                 this.keresztNev = keresztNev;
                 this.vezetekNev = vezetekNev;
@@ -39,6 +42,7 @@ public class Felhasznalo{
                 this.testSuly = testSuly;
         }
 
+        //Konstruktor ha meg kell adni (szintén bean-elés)
         public Felhasznalo(Long id, String keresztNev, String vezetekNev, String email, Integer eletkor, Integer testSuly) {
                 this.id = id;
                 this.keresztNev = keresztNev;
@@ -48,6 +52,7 @@ public class Felhasznalo{
                 this.testSuly = testSuly;
         }
 
+        //get set
         public Long getId() {
                 return id;
         }

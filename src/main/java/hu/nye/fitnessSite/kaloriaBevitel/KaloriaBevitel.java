@@ -2,10 +2,7 @@ package hu.nye.fitnessSite.kaloriaBevitel;
 
 import hu.nye.fitnessSite.felhasznalo.Felhasznalo;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
-
-import java.util.List;
 
 @Entity
 @Table(name = "KaloriaBevitel")

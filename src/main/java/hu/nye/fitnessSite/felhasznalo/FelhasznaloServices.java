@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+//itt található minden metódus
 @Service
 public class FelhasznaloServices {
 

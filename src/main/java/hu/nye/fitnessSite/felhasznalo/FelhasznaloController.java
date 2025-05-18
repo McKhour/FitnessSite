@@ -18,6 +18,7 @@ public class FelhasznaloController {
         this.felhasznaloServices = service;
     }
 
+    //ez szolgál a fő dolgokért
     @GetMapping("/list")
     public String getAllFelhaszn(Model model){
         List<Felhasznalo> felhasz = felhasznaloServices.getAllFelhaszn();
@@ -25,18 +26,21 @@ public class FelhasznaloController {
         return "felhasznalo/felhasznalo";
     }
 
+    //Mikor új értéket veszek fel átírányít egy másik oldalra
     @GetMapping("/uj")
     public String ujFelhasznaloForm(Model model) {
         model.addAttribute("felhasznalo", new Felhasznalo());
         return "felhasznalo/ujFelhasznalo";
     }
 
+    //Vissza vezet az alap oldalra
     @PostMapping("/uj")
     public String mentes(@ModelAttribute Felhasznalo felhasznalo) {
         felhasznaloServices.save(felhasznalo); // Meghívja a REST controllert
         return "redirect:/felhasznalo/list";
     }
 
+    //ugyan az mint az új létrehozásánál
     @GetMapping("/szerkeszt/{id}")
     public String szerkesztFelhasznForm(@PathVariable Long id, Model model){
         Felhasznalo felhasznalo = felhasznaloServices.findById(id);
@@ -50,6 +54,7 @@ public class FelhasznaloController {
         return "redirect:/felhasznalo/list";
     }
 
+    //utolsó esély meggondolni
     @GetMapping("/torol/{id}")
     public String torlesMegerosites(@PathVariable Long id, Model model) {
         Felhasznalo felhasznalo = felhasznaloServices.findById(id);
