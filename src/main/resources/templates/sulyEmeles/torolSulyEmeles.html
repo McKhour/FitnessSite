@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Súly emelés törlése</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Suly emelés törlése</h1>
+
+<p>Biztosan törölni szerenté a következő súly emelést?</p>
+
+<ul>
+    <li><strong>ID</strong><span th:text="${suly.id}"></span></li>
+    <li><strong>Felhasználó</strong><span th:text="${suly.felhasznalo.vezetekNev + ' ' + suly.felhasznalo.keresztNev}"></span></li>
+    <li><strong>Súly</strong><span th:text="${suly.suly}"></span></li>
+    <li><strong>Szettek</strong><span th:text="${suly.szettek}"></span></li>
+    <li><strong>Repek</strong><span th:text="${suly.repek}"></span></li>
+    <li><strong>Típusa</strong><span th:text="${suly.tipusa}"></span></li>
+</ul>
+<form th:action="@{'/sulyEmeles/torol/' + ${suly.id}}" method="post">
+    <button type="submit">
+        Törlés megerősítése
+    </button>
+</form>
+<br>
+<a th:href="@{/sulyEmeles/list}">Mégsem - Vissza a listához</a>
+</body>
+</html>

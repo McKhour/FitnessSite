@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Új Súly emelés</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Új súlyemelés felvétele</h1>
+<form th:action="@{/sulyEmeles/uj}" th:object="${suly}" method="post">
+  <table>
+    <tr>
+      <td><label for="felhasznalo">Felhasználó</label></td>
+      <td>
+        <select id="felhasznalo" th:field="*{felhasznalo.id}" required>
+          <option th:each="felh : ${felhasznalok}"
+                  th:value="${felh.id}"
+                  th:text="${felh.keresztNev + ' ' + felh.vezetekNev}">
+          </option>
+        </select>
+        <br></td>
+    </tr>
+    <tr>
+      <td><label for="suly">Súly (kg)</label></td>
+      <td><input type="number" id="suly" th:field="*{suly}" required><br></td>
+    </tr>
+    <tr>
+      <td><label for="szettek">Szettek</label></td>
+      <td><input type="number" id="szettek" th:field="*{szettek}" required><br></td>
+    </tr>
+    <tr>
+      <td><label for="repek">Repek</label></td>
+      <td><input type="number" id="repek" th:field="*{repek}" required><br></td>
+    </tr>
+    <tr>
+      <td><label for="tipusa">Típusa</label></td>
+      <td><select id="tipusa" th:field="*{tipusa}" required>
+        <option th:value="EGYKEZES" th:text="Egykezes"></option>
+        <option th:value="KETKEZES" th:text="Kétkezes"></option>
+        <option th:value="TOLOPAD" th:text="Tolópad"></option>
+        <option th:value="FEKVENYOMAS" th:text="Fekvenyomás"></option>
+      </select><br>
+      </td>
+    </tr>
+  </table>
+  <button type="submit">Mentés</button>
+</form>
+<a th:href="@{/sulyEmeles/list}">Vissza a listához</a>
+<p></p>
+<a th:href="@{/}">Főoldal</a>
+</body>
+</html>

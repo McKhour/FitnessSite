@@ -15,16 +15,26 @@
         <th>Szettek</th>
         <th>Repek</th>
         <th>Típusa</th>
+        <th>Szerkesztés</th>
+        <th>Törlés</th>
     </tr>
-    <tr th:each="suly_emeles : ${suly}">
+    <tr th:each="suly_emeles : ${sulyok}">
         <td th:text="${suly_emeles.id}">ID</td>
         <td th:text="${suly_emeles.felhasznalo.id}">Felhasználó ID</td>
         <td th:text="${suly_emeles.suly}">Súly</td>
         <td th:text="${suly_emeles.szettek}">Szettek</td>
         <td th:text="${suly_emeles.repek}">Repek</td>
         <td th:text="${suly_emeles.tipusa}">Típusa</td>
+        <td>
+            <a th:href="@{'/sulyEmeles/szerkeszt/' + ${suly_emeles.id}}">Szerkesztés</a>
+        </td>
+        <td>
+            <a th:href="@{/sulyEmeles/torol/{id}(id=${suly_emeles.id})}" class="btn btn-danger">Törlés</a>
+        </td>
     </tr>
 </table>
+<a th:href="@{/sulyEmeles/uj}">Új súly emelés hozzá adása</a>
+<p></p>
 <a th:href="@{/}">Vissza a főoldalra</a>
 </body>
 </html>

@@ -11,7 +11,7 @@ public class SulyEmeles{
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
         @ManyToOne
-        @JoinColumn(name = "felhasznalo_id", referencedColumnName = "id")
+        @JoinColumn(name = "felhasznalo_id", referencedColumnName = "id", nullable = false)
         private Felhasznalo felhasznalo;
         @Positive
         private Integer suly;
