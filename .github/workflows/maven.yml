@@ -1,0 +1,34 @@
+name: FitnessSite
+
+on:
+  push:
+    branches:
+      - master
+    pull_request:
+      branches:
+        - master
+
+jobs:
+  build_and_test:
+    runs-on: Windows 10
+    steps:
+      - name: Checkout code (Clone the repo to this runner)
+        uses: actions/checkout@v3
+
+      - name: Install java
+        uses: actions/setup_java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Maven verify
+        run: mvn verify
+
+      - name: Package the code
+        run: mvn package
+
+      - name: Upload the packaged code
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-jar
+          path: target/FitnessSite-0.0.1-SNAPSHOT.jat
