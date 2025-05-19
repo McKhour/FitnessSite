@@ -7,7 +7,6 @@ import hu.nye.fitnessSite.futas.FutasServices;
 import hu.nye.fitnessSite.futas.Helye;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
