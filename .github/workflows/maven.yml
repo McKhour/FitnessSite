@@ -10,7 +10,7 @@ on:
 
 jobs:
   build_and_test:
-    runs-on: Windows 10
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code (Clone the repo to this runner)
         uses: actions/checkout@v3
